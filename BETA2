@@ -1,0 +1,218 @@
+//Begin Date: TUESDAY-21-05-2019, file created at 2156 hours (9:56 PM).
+//Completion: SATURDAY
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{     
+	  //Input for Quizzes (qx), Exams (ex), Seatworks (sx), Notebook (nb), and Boardwork (bw).
+      int q1, q2, q3, q4, e1, e2, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, nb, bw;
+      
+      //Name Initializers.
+	  string lname;
+	  string fname;
+	  
+	  //Name Storage Arrays.
+	  string studentLName[50];
+	  string studentFName[50];
+	  
+	  //Placeholder (counter for initialPhase, x for betaPhase) counters.
+      int x;
+      int counter = 0;
+      
+      //Leaderboard (totalled highests, top students' first and last names) Storage Arrays.
+      int htote[10] = {0};
+      string sLNtop[10] = {"None"};
+      string sFNtop[10] = {"None"};
+      
+      //Function Results (quiz-, exam-, and seatwork-averages; notebook's average; total overall), Percentage (totalled) Storage Array.
+      float qave, eave, save, nbsa, tot;
+      float tote[50] = {0};
+      
+      //Grade Point Average Discriminator (line = borderline), Grade Point Average (fweighted = final weighted) Storage Array.
+      float line = 3.00;
+	  float fweighted[50] = {0}; 
+
+	  //initialPhase - input of raw data and names.
+      while (fname!= "OK"){
+          //Name input.
+		  cout << "=======================================================" << endl;
+		  
+		  cout << "Enter the student's last and first name: (Type in 'OK' twice to terminate)" << endl;
+		  cin >> lname >> fname;
+		  studentLName[counter] = lname;
+		  studentFName[counter] = fname;
+		  
+		  cout << "=======================================================" << endl;
+		  
+		  //Data inputs.
+		  cout << "WARNING: Please follow the cap values per criteria. This will only be rejected at the end of the input line." << endl;
+		  cout << "Scores of quizzes 1 to 4: (Type '-' if you typed OK twice earlier)" << endl;
+		  cin >> q1 >> q2 >> q3 >> q4;
+		  //^^^Quizzes.
+		  
+		  cout << "Scores of Prelims and Finals: " << endl;
+		  cin >> e1 >> e2;
+		  //^^^Exams.
+		  
+		  cout << "Scores of Seatworks 1 to 10: " << endl;
+		  cin >> s1 >> s2 >> s3 >> s4 >> s5 >> s6 >> s7 >> s8 >> s9 >> s10;
+		  //^^^Seatworks.
+		  
+		  cout << "Notebook Grade: " << endl;
+		  cin >> nb;
+		  
+		  cout << "Boardwork Grade: " << endl;
+          cin >> bw;
+          //^Unimplemented.
+          
+          //alphaPhase - data computation and checking of states.
+		  {
+		  if (q1 > -1 && q1 < 101, q2 > -1 && q2 < 101 , q3 > -1 && q3 < 101 , q4 > -1 && q4 < 101 , e1 > -1 && e1 < 101 , e2 > -1 && e2 < 101 , s1 > -1 && s1 < 11 , s2 > -1 && s2 < 11 , s3 > -1 && s3 < 11 , s4 > -1 && s4 < 11 , s5 > -1 && s5 < 11 , s6 > -1 && s6 < 11 , s7 > -1 && s7 < 11 , s8 > -1 && s8 < 11 , s9 > -1 && s9 < 11 , s10 > -1 && s10 < 11){
+              qave = ((q1 + q2 + q3 + q4)/4) * 0.60;
+              eave = ((e1 + e2)/2) * 0.40;
+              save = ((s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10)/10) * 0.02;
+              nbsa = (nb/100);
+              tot = qave + eave + save + nbsa;
+              tote[counter] = tot;
+		}
+
+
+          else{
+        	cout << "ERROR. VALUE MUST BE BETWEEN 0 AND 100." << endl;
+			}
+	}
+	
+		{
+			//This transmutes percentages to Grade Point Averages.
+		if (tote[counter] >= 95.57){
+     	fweighted[counter] = 1.00;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 91.12 && tote[counter] <= 95.57){
+     	fweighted[counter] = 1.25;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 86.68 && tote[counter] <= 91.11){ 
+     	fweighted[counter] = 1.50;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 82.23 && tote[counter] <=86.67){
+     	fweighted[counter] = 1.75;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 77.79 && tote[counter] <=82.22){
+     	fweighted[counter] = 2.00;
+	 	counter++;
+		}
+	 	else if (tote[counter] >= 73.34 && tote[counter] <=77.78){
+     	fweighted[counter] = 2.25;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 68.90 && tote[counter] <=73.33){
+     	fweighted[counter] = 2.50;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 64.45 && tote[counter] <=68.89){
+     	fweighted[counter] = 2.75;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 60.00 && tote[counter] <=64.44){
+     	fweighted[counter] = 3.00;
+     	counter++;
+	 	}
+	 	else if (tote[counter] <= 59.99){
+	 	fweighted[counter] = 5.00;
+	 	counter++;
+	 	}
+	 }
+	 
+	 //betaPhase - analyses and updates leaderboards.
+	 for (x = 0; x < counter; x++)
+      {
+          if(tote[x] > htote[0])
+          {
+          	//This whole proces moves the leader board back, with the lowest being gone.
+            htote [9] = htote [8];
+            sLNtop [9] = sLNtop [8];
+            sFNtop [9] = sFNtop [8];
+            
+            htote [8] = htote [7];
+            sLNtop [8] = sLNtop [7];
+            sFNtop [8] = sFNtop [7];
+            
+            htote [7] = htote [6];
+            sLNtop [7] = sLNtop [6];
+            sFNtop [7] = sFNtop [6];
+            
+            htote [6] = htote [5];
+            sLNtop [6] = sLNtop [5];
+            sFNtop [6] = sFNtop [5];
+            
+            htote [5] = htote [4];
+            sLNtop [5] = sLNtop [4];
+            sFNtop [5] = sFNtop [4];
+            
+            htote [4] = htote [3];
+            sLNtop [4] = sLNtop [3];
+            sFNtop [4] = sFNtop [3];
+            
+            htote [3] = htote [2];
+            sLNtop [3] = sLNtop [2];
+            sFNtop [3] = sFNtop [2];
+            
+            htote [2] = htote [1];
+            sLNtop [2] = sLNtop [1];
+            sFNtop [2] = sFNtop [1];
+            
+            htote[1] = htote [0];
+            sLNtop[1] = sLNtop [0];
+            sFNtop[1] = sFNtop [0];
+            
+            //This updates the highest.
+			htote[0] = tote[x];
+            sLNtop[0] = studentLName[x];
+            sFNtop[0] = studentFName[x];
+          } 
+      }
+
+    }
+    
+    cout << "=======================================================" << endl;
+    
+    //This displays the names of students scoring approximately 3.0 to 1.0.
+      cout << "The following students passed this subject:" << "\n";
+     for (x = 0; x <= counter; x++)
+      {
+          if(fweighted[x] <= line)
+          {   
+            cout << studentLName[x] << ", " << studentFName[x] << " - " << fweighted[x] << "\n";
+          } 
+      }
+
+	cout << "=======================================================" << endl;
+
+      //This displays the names of students scoring all outside of 1.0 to 3.0, with 0 included.
+      cout << "The following students are asked to seek counselling: " << "\n";
+     for (x = 0; x < counter; x++)
+      {
+          if(fweighted[x] > line)
+          {
+          	//Note: The last student of this category and/or possibly the other is a blank name with a 0 as its grade.
+            cout << studentLName[x] << ", " << studentFName[x] << " - " << fweighted[x] << "\n";
+          } 
+      }
+
+	cout << "=======================================================" << endl;
+
+      //This displays the names of students scoring the highest.
+      cout << "The following students show the most promise in the subject: " << "\n";
+     for (x = 0; x < counter; x++)
+      {
+      		//Note: The code somehow prints out the top 3 being the same. The top 4 and beyond appear normal.
+            cout << sLNtop[x] << ", " << sFNtop[x] << " - " << htote[x] << "\n";
+      }
+      
+	 }
