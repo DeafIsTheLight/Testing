@@ -1,0 +1,135 @@
+//Begin Date: TUESDAY-21-05-2019, file created at 2156 hours (9:56 PM).
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main()
+{     
+      //PRE-PHASE: SET-UP
+      //Pre-Phase deals with declaring pathways, variable titles, and array sizes.
+	  
+	  //Arbitrary notations for sorting in respective array. Scores and names.
+      int q1, q2, q3, q4, e1, e2, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, nb, bw;
+      string name;
+      
+      //Storage array.
+	  string studentName[49];
+	  
+	  //Performs the calculations of functions.
+      int qave, eave, save;
+      int nbsa, bwsa;
+      
+      //The two partial totals.
+      int ptot;
+      //Storage into array.
+      int ptote[49];
+      
+      //The GPA Line that helps discriminate between those who pass and those who don't.
+      int line = 3;
+      
+      //Calls and displays specifically tagged name(s).
+      string top;
+      
+      //System tester and miscellaneous key triggers, may or may not be vital to the operation.
+      int counter;
+      int system;
+       
+      //PHASE I: DECLARATION
+      //Phase I deals with the input of data, calculations of the grades, and subsequent arrayed storage.
+      
+      //This is the beginning of the programme's entries.
+      //All details, such as the names and individual grades are input here.
+	  
+	  while (counter!= -1){
+          //Name input.
+		  cout << "Enter the student's name;/n score of quizzes 1 to 4; prelims; finals; seatworks 1 to 10; notebook grade; and boardwork grade (input '0' to display overall): " << endl;
+          studentName[counter] = name;
+          cin >> name >> q1 >> q2 >> q3 >> q4 >> e1 >> e2 >> s1 >> s2 >> s3 >> s4 >> s5 >> s6 >> s7 >> s8 >> s9 >> s10 >> nb >> bw;
+          
+		  //This is the transition point. The phase of taking in data ends and processing the raw is being done.
+          //The Mega Checklist of Values to see if any parameters such as quizzes, exams, and seatworks.
+		  if (q1 > -1 && q1 < 101, q2 > -1 && q2 < 101 , q3 > -1 && q3 < 101 , q4 > -1 && q4 < 101 , e1 > -1 && e1 < 101 , e2 > -1 && e2 < 101 , s1 > -1 && s1 < 11 , s2 > -1 && s2 < 11 , s3 > -1 && s3 < 11 , s4 > -1 && s4 < 11 , s5 > -1 && s5 < 11 , s6 > -1 && s6 < 11 , s7 > -1 && s7 < 11 , s8 > -1 && s8 < 11 , s9 > -1 && s9 < 11 , s10 > -1 && s10 < 11){
+              counter++;
+              qave = ((q1 + q2 + q3 + q4)/4) * 0.60;
+              eave = ((e1 + e2)/2) * 0.40;
+              save = ((s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10)/10) * 0.02;
+              nbsa = (nb/100) * 0.01;
+              ptote[counter] = ptot;
+			  ptot = qave + eave + save + nbsa;
+          }
+      
+          
+          else{
+        	cout << "ERROR. VALUE MUST BE BETWEEN 0 AND 100." << endl;
+			 
+        }
+        
+    }
+        
+        	cout << ptote[49] << endl;
+      //Ends at printing of partial total (ptote).
+      //Unimplemented: Sorting of Data by top and least, Translating from percentage to GPA, and display of top 10.
+ }
+
+void {
+//Unimplemented/Incomplete codes.
+
+      //PHASE II: SORTING
+      //Phase II deals with the discrimination of data, sorting of the names, and readying for display.
+      //NOTE: THE PROCESS IS CONTINOUS. THIS IS ONLY A FOLLOWING PHASE.
+     
+     //This assigns values from raw to GPA.
+     if (ptote >= 95.57){
+     	weighted = 1.00;
+	 }
+	 if (ptote >= 95.56, ptote <=91.12){
+     	weighted = 1.25;
+	 }
+	 if (ptote >= 86.68, ptote <=91.11){
+     	weighted = 1.50;
+	 }
+	 if (ptote >= 82.23, ptote <=86.67){
+     	weighted = 1.75;
+	 }
+	 if (ptote >= 77.79, ptote <=82.22){
+     	weighted = 2.00;
+	 }
+	 if (ptote >= 73.34, ptote <=77.78){
+     	weighted = 2.25;
+	 }
+	 if (ptote >= 68.90, ptote <=73.33){
+     	weighted = 2.50;
+	 }
+	 if (ptote >= 64.45, ptote <=68.89){
+     	weighted = 2.75;
+	 }
+	 if (ptote >= 60.00, ptote <=64.44){
+     	weighted = 3.00;
+	 }
+	 else {
+	 	weighted = 5.00
+	 }
+	 
+	 //This displays the names of students scoring approximately 3.0 and higher.
+      cout << "The following students passed this subject:";
+     for (int x = 0; x <= count; x++)
+      {
+          if(weighted[x] <= line)
+          {   
+            cout << studentName[x] << "; ";
+          } 
+      }
+     
+     //This displays the names of students scoring anything higher than the 3.0 approximation.
+      cout << "The following students are asked to seek counselling for " << subject << ": ";
+     for (int x = 0; x < count; x++)
+      {
+          if(weighted[x] > line)
+          {   
+            cout << studentName[x] << "; ";
+          } 
+      }
+  }
