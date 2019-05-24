@@ -1,0 +1,137 @@
+//Begin Date: TUESDAY-21-05-2019, file created at 2156 hours (9:56 PM).
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{     
+      int q1, q2, q3, q4, e1, e2, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, nb, bw;
+      
+	  string lname;
+	  string fname;
+	  string studentLName[49];
+	  string studentFName[49];
+	  
+      int x;
+      int counter = 0;
+      
+      int qave, eave, save, nbsa, tot;
+      int tote[49];
+      
+      int line = 3.00;
+	  int fweighted[49]; 
+
+      while (fname!= "OK"){
+          //Name input.
+		  cout << "=======================================================" << endl;
+		  
+		  cout << "Enter the student's last and first name: (Type 'OK' to terminate)" << endl;
+		  cin >> lname >> fname;
+		  studentLName[counter] = lname;
+		  studentFName[counter] = fname;
+		  
+		  cout << "=======================================================" << endl;
+		  
+		  cout << "WARNING: Please follow the cap values per criteria. This will only be rejected at the end of the input line." << endl;
+		  cout << "Scores of quizzes 1 to 4: (Type '-' if you typed OK twice earlier)" << endl;
+		  cin >> q1 >> q2 >> q3 >> q4;
+		  
+		  cout << "Scores of Prelims and Finals: " << endl;
+		  cin >> e1 >> e2;
+		  
+		  cout << "Scores of Seatworks 1 to 10: " << endl;
+		  cin >> s1 >> s2 >> s3 >> s4 >> s5 >> s6 >> s7 >> s8 >> s9 >> s10;
+		  
+		  cout << "Notebook Grade: " << endl;
+		  cin >> nb;
+		  
+		  cout << "Boardwork Grade: " << endl;
+          cin >> bw;
+          
+		  {
+		  if (q1 > -1 && q1 < 101, q2 > -1 && q2 < 101 , q3 > -1 && q3 < 101 , q4 > -1 && q4 < 101 , e1 > -1 && e1 < 101 , e2 > -1 && e2 < 101 , s1 > -1 && s1 < 11 , s2 > -1 && s2 < 11 , s3 > -1 && s3 < 11 , s4 > -1 && s4 < 11 , s5 > -1 && s5 < 11 , s6 > -1 && s6 < 11 , s7 > -1 && s7 < 11 , s8 > -1 && s8 < 11 , s9 > -1 && s9 < 11 , s10 > -1 && s10 < 11){
+              qave = ((q1 + q2 + q3 + q4)/4) * 0.60;
+              eave = ((e1 + e2)/2) * 0.40;
+              save = ((s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10)/10) * 0.02;
+              nbsa = (nb/100) * 0.01;
+              tot = qave + eave + save + nbsa;
+              tote[counter] = tot;
+		}
+
+
+          else{
+        	cout << "ERROR. VALUE MUST BE BETWEEN 0 AND 100." << endl;
+			}
+	}
+	
+		{
+		if (tote[counter] >= 95.57){
+     	fweighted[counter] = 1.00;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 95.56, tote[counter] <=91.12){
+     	fweighted[counter] = 1.25;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 86.68, tote[counter] <=91.11){
+     	fweighted[counter] = 1.50;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 82.23, tote[counter] <=86.67){
+     	fweighted[counter] = 1.75;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 77.79, tote[counter] <=82.22){
+     	fweighted[counter] = 2.00;
+	 	counter++;
+		}
+	 	else if (tote[counter] >= 73.34, tote[counter] <=77.78){
+     	fweighted[counter] = 2.25;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 68.90, tote[counter] <=73.33){
+     	fweighted[counter] = 2.50;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 64.45, tote[counter] <=68.89){
+     	fweighted[counter] = 2.75;
+     	counter++;
+	 	}
+	 	else if (tote[counter] >= 60.00, tote[counter] <=64.44){
+     	fweighted[counter] = 3.00;
+     	counter++;
+	 	}
+	 	else {
+	 	fweighted[counter] = 5.00;
+	 	counter++;
+	 	}
+	 }
+
+    }
+    
+    cout << "=======================================================" << endl;
+    
+    //This displays the names of students scoring approximately 3.0 and higher.
+      cout << "The following students passed this subject:" << "\n";
+     for (int x = 0; x <= counter; x++)
+      {
+          if(fweighted[x] <= line)
+          {   
+            cout << studentLName[x] << ", " << studentFName[x] << " - " << fweighted[x] << "\n";
+          } 
+      }
+
+	cout << "=======================================================" << endl;
+
+      //This displays the names of students scoring anything higher than the 3.0 approximation.
+      cout << "The following students are asked to seek counselling: " << "\n";
+     for (int x = 0; x < counter; x++)
+      {
+          if(fweighted[x] > line)
+          {   
+            cout << studentLName[x] << ", " << studentFName[x] << " - " << fweighted[x] << "\n";
+          } 
+      }
+
+ }
